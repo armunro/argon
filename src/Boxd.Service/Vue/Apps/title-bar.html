@@ -1,0 +1,16 @@
+<div class="container-fluid" >
+    <div class="row justify-content-between">
+        <div class="col col-3">
+            <button type="button" class="btn btn-primary btn-sm" ><i class="fas fa-chevron-left"></i></button>
+            <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="col-auto">
+            {{ tool.name}}
+        </div>
+        <div class="col col-3 text-end">
+            <button @click="minimize()" type="button" class="btn btn-primary btn-sm"><i class="far fa-window-minimize"></i></button>
+            <button @click="maximize()" type="button" class="btn btn-secondary btn-sm"><i class="far fa-window-maximize"></i></button>
+            <button @click="close()" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+</div>
