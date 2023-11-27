@@ -15,7 +15,7 @@ namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
             Height = 960;
                 
             _browser = new WebView2();
-            _browser.Source = new Uri("http://localhost:4300/launchdialog");
+            _browser.Source = new Uri("http://localhost:4301/launchdialog");
             _browser.Dock = DockStyle.Fill;
             _browser.Width = Width;
             _browser.Height = Height;

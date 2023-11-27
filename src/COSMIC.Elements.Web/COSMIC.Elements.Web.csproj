@@ -44,10 +44,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Vue\Components" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Compile Remove="Vue\Apps\title-bar.html\**" />
     </ItemGroup>
 

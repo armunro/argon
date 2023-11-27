@@ -41,12 +41,12 @@ namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
 
             TitleBrowser = new WebView2();
             TitleBrowser.Width = Width;
-            TitleBrowser.Height = 40;
+            TitleBrowser.Height = 25;
             TitleBrowser.Dock = DockStyle.Top;
 
-            Browser.Height = Height - 40;
+            Browser.Height = Height - 25;
             Browser.Width = Width;
-            Browser.Top = 41;
+            Browser.Top = 26;
 
 
             lblTitle = new TransparentLabel();
@@ -63,7 +63,7 @@ namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
 
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            this.lblTitle.Size = new System.Drawing.Size(Width, 50);
+            this.lblTitle.Size = new System.Drawing.Size(Width -200, 25);
             this.lblTitle.TabIndex = 9;
 
 
@@ -92,9 +92,9 @@ namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
         {
             Box.State.Host.Height = Height;
             Box.State.Host.Width = Width;
-            Browser.Height = Height - 40 - 3;
-            Browser.Width = Width - 3;
-            Browser.Top = 40;
+            Browser.Height = Height - 25 - 2;
+            Browser.Width = Width - 2;
+            Browser.Top = 25;
         }
 
         private void OnMove(object? sender, EventArgs e)
@@ -145,7 +145,7 @@ namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
             Box = box;
 
             Browser.Source = new Uri(box.StartUrl);
-            TitleBrowser.Source = new Uri("http://localhost:4300/Titlebar/" + InstanceId.ToString());
+            TitleBrowser.Source = new Uri("http://localhost:4301/Titlebar/" + InstanceId.ToString());
             Browser.Width = ClientSize.Width - 4;
             Browser.Height = ClientSize.Height - 26;
         }
