@@ -20,7 +20,7 @@ namespace COSMIC.Elements.Web.Controllers
         [HttpGet]
         public Dictionary<string, ScreenGroup> Index()
         {
-            return _controller.BoxGroups;
+            return _controller.ScreenGroups;
         }
 
     }

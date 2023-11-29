@@ -20,7 +20,7 @@ namespace COSMIC.Elements.Windows
         public static IContainer Container;
         public static ElementsAspCorePresentation Presentation = new();
 
-        public Dictionary<string, ScreenGroup> BoxGroups { get; set; }
+        public Dictionary<string, ScreenGroup> ScreenGroups { get; set; }
 
         public Dictionary<Guid, ScreenInstance> Instances { get; set; } = new();
 
@@ -37,7 +37,7 @@ namespace COSMIC.Elements.Windows
             builder.RegisterType<ScreenGroupFileReaderWriter>().As<IScreenGroupWriter>().SingleInstance()
                 .WithParameter(new NamedParameter("filePath", toolsetDir));
             Container = builder.Build();
-            BoxGroups = Container.Resolve<IScreenGroupReader>().ReadToolsets();
+            ScreenGroups = Container.Resolve<IScreenGroupReader>().ReadToolsets();
             Presentation.Start(Container);
 
 
@@ -58,7 +58,7 @@ namespace COSMIC.Elements.Windows
 
         public void StartBox(string toolsetName, string toolName)
         {
-            ScreenModel screenModel = BoxGroups[toolsetName].Tools.FirstOrDefault(x => x.Name == toolName);
+            ScreenModel screenModel = ScreenGroups[toolsetName].Tools.FirstOrDefault(x => x.Name == toolName);
             Guid newInstanceId = Guid.NewGuid();
 
 
@@ -83,7 +83,7 @@ namespace COSMIC.Elements.Windows
             }));
         }
 
-        public ScreenInstance GetBoxByName(string name)
+        public ScreenInstance GetScreenByName(string name)
         {
             var boxInstance = Instances.Values.Where(x => x.ScreenModel.Name == name).FirstOrDefault();
             return boxInstance;
