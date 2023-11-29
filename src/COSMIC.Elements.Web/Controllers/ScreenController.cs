@@ -8,10 +8,10 @@ namespace COSMIC.Elements.Web.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class BoxController : Controller
+    public class ScreenController : Controller
     {
         private IBoxHostController _controller;
-        public BoxController(IBoxHostController controller)
+        public ScreenController(IBoxHostController controller)
         {
             _controller = controller;
         }
