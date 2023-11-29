@@ -7,9 +7,9 @@ namespace COSMIC.Elements.Web.Domain.Screen
     {
         public Guid InstanceId { get; }
         public ScreenModel ScreenModel { get; }
-        public IBoxHost Host { get; }
+        public IScreenHost Host { get; }
 
-        public ScreenInstance(Guid instanceId, ScreenModel screenModel, IBoxHost host)
+        public ScreenInstance(Guid instanceId, ScreenModel screenModel, IScreenHost host)
         {
             ScreenModel = screenModel;
             Host = host;

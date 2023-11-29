@@ -11,31 +11,31 @@ namespace COSMIC.Elements.Web.Controllers
     [Route("[controller]")]
     public class InstanceController : Controller
     {
-        private readonly IBoxHostController _boxHostController;
+        private readonly IScreenHostController _screenHostController;
 
-        public InstanceController(IBoxHostController boxHostController)
+        public InstanceController(IScreenHostController screenHostController)
         {
-            _boxHostController = boxHostController;
+            _screenHostController = screenHostController;
         }
 
         [HttpGet]
         public List<ScreenInstance> GetActiveWindows()
         {
-            return _boxHostController.Instances.Values.ToList();
+            return _screenHostController.Instances.Values.ToList();
         }
 
         [HttpGet]
         [Route("{instanceId:guid}")]
         public ScreenInstance GetActiveWindow(Guid instanceId)
         {
-            return _boxHostController.Instances[instanceId];
+            return _screenHostController.Instances[instanceId];
         }
 
         [HttpGet]
         [Route("{groupName}/{boxName}")]
         public List<ScreenInstance> GetInstances(string groupName, string boxName)
         {
-            return _boxHostController.Instances.Values.Where(x => x.ScreenModel.Name == boxName).ToList();
+            return _screenHostController.Instances.Values.Where(x => x.ScreenModel.Name == boxName).ToList();
         }
     }
 }

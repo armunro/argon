@@ -4,7 +4,7 @@ namespace COSMIC.Elements.Web.Domain.Screen.Host.Actions.Builtin
 {
     public class MaximizeBoxAction: IBoxHostAction
     {
-        public void PerformAction(IBoxHost host, ScreenModel screenModel,  IBoxHostController controller)
+        public void PerformAction(IScreenHost host, ScreenModel screenModel,  IScreenHostController controller)
         {
             host.ChangeWindowState(BoxHostFormState.Maximized);
         }

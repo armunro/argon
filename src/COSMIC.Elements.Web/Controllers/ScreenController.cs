@@ -10,8 +10,8 @@ namespace COSMIC.Elements.Web.Controllers
     [Route("[controller]")]
     public class ScreenController : Controller
     {
-        private IBoxHostController _controller;
-        public ScreenController(IBoxHostController controller)
+        private IScreenHostController _controller;
+        public ScreenController(IScreenHostController controller)
         {
             _controller = controller;
         }

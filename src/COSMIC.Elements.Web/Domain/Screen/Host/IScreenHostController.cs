@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace COSMIC.Elements.Web.Domain.Screen.Host
 {
-    public interface IBoxHostController
+    public interface IScreenHostController
     {
         Dictionary<string, ScreenGroup> BoxGroups { get; set; }
         Dictionary<Guid, ScreenInstance> Instances { get; set; }

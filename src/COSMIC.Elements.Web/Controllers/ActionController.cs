@@ -11,11 +11,11 @@ namespace COSMIC.Elements.Web.Controllers
     [Route("[controller]")]
     public class ActionController : Controller
     {
-        private readonly IBoxHostController _boxHostController;
+        private readonly IScreenHostController _screenHostController;
 
-        public ActionController(IBoxHostController boxHostController)
+        public ActionController(IScreenHostController screenHostController)
         {
-            _boxHostController = boxHostController;
+            _screenHostController = screenHostController;
         }
 
         [HttpGet]
@@ -39,8 +39,8 @@ namespace COSMIC.Elements.Web.Controllers
                     break;
             }
 
-            ScreenInstance instance = _boxHostController.Instances[instanceId];
-            action.PerformAction(instance.Host, instance.ScreenModel, _boxHostController);
+            ScreenInstance instance = _screenHostController.Instances[instanceId];
+            action.PerformAction(instance.Host, instance.ScreenModel, _screenHostController);
 
             return Ok();
         }

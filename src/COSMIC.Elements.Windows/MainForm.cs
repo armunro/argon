@@ -15,7 +15,7 @@ using FontAwesome.Sharp;
 
 namespace COSMIC.Elements.Windows
 {
-    public partial class MainForm : Form, IBoxHostController
+    public partial class MainForm : Form, IScreenHostController
     {
         public static IContainer Container;
         public static ElementsAspCorePresentation Presentation = new();
@@ -29,15 +29,15 @@ namespace COSMIC.Elements.Windows
             var builder = new ContainerBuilder();
             builder.RegisterModule<Dependencies.ToolsModule>();
 
-            builder.RegisterInstance(this).As<IBoxHostController>();
+            builder.RegisterInstance(this).As<IScreenHostController>();
 
             string toolsetDir = Path.Join(configDir, "toolsets");
-            builder.RegisterType<BoxGroupFileReaderWriter>().As<IBoxGroupReader>().SingleInstance()
+            builder.RegisterType<ScreenGroupFileReaderWriter>().As<IScreenGroupReader>().SingleInstance()
                 .WithParameter(new NamedParameter("filePath", toolsetDir));
-            builder.RegisterType<BoxGroupFileReaderWriter>().As<IBoxGroupWriter>().SingleInstance()
+            builder.RegisterType<ScreenGroupFileReaderWriter>().As<IScreenGroupWriter>().SingleInstance()
                 .WithParameter(new NamedParameter("filePath", toolsetDir));
             Container = builder.Build();
-            BoxGroups = Container.Resolve<IBoxGroupReader>().ReadToolsets();
+            BoxGroups = Container.Resolve<IScreenGroupReader>().ReadToolsets();
             Presentation.Start(Container);
 
 
@@ -47,13 +47,13 @@ namespace COSMIC.Elements.Windows
             NotifyIcon.Visible = true;
         }
 
-        public IBoxHost CreateBox(ScreenModel screenModel, Guid instanceId)
+        public IScreenHost CreateBox(ScreenModel screenModel, Guid instanceId)
         {
-            IBoxHost boxHost;
-            boxHost = new BrowserBoxHost();
-            boxHost.InstanceId = instanceId;
-            boxHost.SetHostBox(screenModel);
-            return boxHost;
+            IScreenHost screenHost;
+            screenHost = new BrowserScreenHost();
+            screenHost.InstanceId = instanceId;
+            screenHost.SetHostBox(screenModel);
+            return screenHost;
         }
 
         public void StartBox(string toolsetName, string toolName)
@@ -64,7 +64,7 @@ namespace COSMIC.Elements.Windows
 
             Invoke(new Action(() =>
             {
-                IBoxHost host = CreateBox(screenModel, newInstanceId);
+                IScreenHost host = CreateBox(screenModel, newInstanceId);
 
                 ScreenInstance newInstance = new ScreenInstance(screenModel: screenModel, host: host, instanceId: newInstanceId);
                 Instances[newInstance.InstanceId] = newInstance;

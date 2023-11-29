@@ -7,11 +7,11 @@ using Newtonsoft.Json;
 
 namespace COSMIC.Elements.Web.Adapter.BoxGroup
 {
-    public class BoxGroupFileReaderWriter : IBoxGroupReader, IBoxGroupWriter
+    public class ScreenGroupFileReaderWriter : IScreenGroupReader, IScreenGroupWriter
     {
         private string _filePath;
 
-        public BoxGroupFileReaderWriter(string filePath)
+        public ScreenGroupFileReaderWriter(string filePath)
         {
             _filePath = filePath;
         }

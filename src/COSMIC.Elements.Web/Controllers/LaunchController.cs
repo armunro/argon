@@ -7,12 +7,12 @@ namespace COSMIC.Elements.Web.Controllers
     [Route("[controller]/{boxGroupName}/{boxName}")]
     public class LaunchController : Controller
     {
-        public LaunchController(IBoxHostController boxHostController)
+        public LaunchController(IScreenHostController screenHostController)
         {
-            _handler = boxHostController;
+            _handler = screenHostController;
         }
 
-        private IBoxHostController _handler { get; set; }
+        private IScreenHostController _handler { get; set; }
         
         [HttpGet]
         public IActionResult Index(string boxGroupName, string boxName)

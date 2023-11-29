@@ -11,14 +11,14 @@ using Label = System.Windows.Forms.Label;
 
 namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
 {
-    public sealed class BrowserBoxHost : Form, IBoxHost
+    public sealed class BrowserScreenHost : Form, IScreenHost
     {
 
         public ScreenModel ScreenModel { get; set; }
         public Guid InstanceId { get; set; }
         public WebView2 Browser;
 
-        public BrowserBoxHost()
+        public BrowserScreenHost()
         {
             InitializeComponent();
 

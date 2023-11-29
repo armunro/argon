@@ -3,7 +3,7 @@ using COSMIC.Elements.Web.Domain.Screen.Host.State;
 
 namespace COSMIC.Elements.Web.Domain.Screen.Host
 {
-    public interface IBoxHost
+    public interface IScreenHost
     {
         
         Guid InstanceId { get; set; }
