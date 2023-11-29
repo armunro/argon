@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.Windows.Controls;
 using System.Windows.Forms;
-using COSMIC.Elements.Web.Domain.Box;
-using COSMIC.Elements.Web.Domain.Box.Host;
-using COSMIC.Elements.Web.Domain.Box.Host.State;
+using COSMIC.Elements.Web.Domain.Screen;
+using COSMIC.Elements.Web.Domain.Screen.Host;
+using COSMIC.Elements.Web.Domain.Screen.Host.State;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 using Label = System.Windows.Forms.Label;
@@ -14,7 +14,7 @@ namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
     public sealed class BrowserBoxHost : Form, IBoxHost
     {
 
-        public Box Box { get; set; }
+        public ScreenModel ScreenModel { get; set; }
         public Guid InstanceId { get; set; }
         public WebView2 Browser;
 
@@ -47,8 +47,8 @@ namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
         
         public void ResizeBrowser()
         {
-            Box.State.Host.Height = Height;
-            Box.State.Host.Width = Width;
+            ScreenModel.State.Host.Height = Height;
+            ScreenModel.State.Host.Width = Width;
             Browser.Height = Height;
             Browser.Width = Width;
         }
@@ -60,8 +60,8 @@ namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
 
         private void OnMove(object? sender, EventArgs e)
         {
-            Box.State.Host.X = Left;
-            Box.State.Host.Y = Top;
+            ScreenModel.State.Host.X = Left;
+            ScreenModel.State.Host.Y = Top;
         }
 
         protected override CreateParams CreateParams
@@ -76,10 +76,10 @@ namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
 
 
 
-        public void SetHostBox(Box box)
+        public void SetHostBox(ScreenModel screenModel)
         {
-            Box = box;
-            Browser.Source = new Uri(box.StartUrl);
+            ScreenModel = screenModel;
+            Browser.Source = new Uri(screenModel.StartUrl);
             Browser.Width = ClientSize.Width - 4;
             Browser.Height = ClientSize.Height - 26;
             ResizeBrowser();

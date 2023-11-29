@@ -1,8 +1,8 @@
 using System;
-using COSMIC.Elements.Web.Domain.Box;
-using COSMIC.Elements.Web.Domain.Box.Host;
-using COSMIC.Elements.Web.Domain.Box.Host.Actions;
-using COSMIC.Elements.Web.Domain.Box.Host.Actions.Builtin;
+using COSMIC.Elements.Web.Domain.Screen;
+using COSMIC.Elements.Web.Domain.Screen.Host;
+using COSMIC.Elements.Web.Domain.Screen.Host.Actions;
+using COSMIC.Elements.Web.Domain.Screen.Host.Actions.Builtin;
 using Microsoft.AspNetCore.Mvc;
 
 namespace COSMIC.Elements.Web.Controllers
@@ -39,8 +39,8 @@ namespace COSMIC.Elements.Web.Controllers
                     break;
             }
 
-            BoxInstance instance = _boxHostController.Instances[instanceId];
-            action.PerformAction(instance.Host, instance.Box, _boxHostController);
+            ScreenInstance instance = _boxHostController.Instances[instanceId];
+            action.PerformAction(instance.Host, instance.ScreenModel, _boxHostController);
 
             return Ok();
         }

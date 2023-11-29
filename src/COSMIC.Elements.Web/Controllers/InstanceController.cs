@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using COSMIC.Elements.Web.Domain.Box;
-using COSMIC.Elements.Web.Domain.Box.Host;
+using COSMIC.Elements.Web.Domain.Screen;
+using COSMIC.Elements.Web.Domain.Screen.Host;
 using Microsoft.AspNetCore.Mvc;
 
 namespace COSMIC.Elements.Web.Controllers
@@ -19,23 +19,23 @@ namespace COSMIC.Elements.Web.Controllers
         }
 
         [HttpGet]
-        public List<BoxInstance> GetActiveWindows()
+        public List<ScreenInstance> GetActiveWindows()
         {
             return _boxHostController.Instances.Values.ToList();
         }
 
         [HttpGet]
         [Route("{instanceId:guid}")]
-        public BoxInstance GetActiveWindow(Guid instanceId)
+        public ScreenInstance GetActiveWindow(Guid instanceId)
         {
             return _boxHostController.Instances[instanceId];
         }
 
         [HttpGet]
         [Route("{groupName}/{boxName}")]
-        public List<BoxInstance> GetInstances(string groupName, string boxName)
+        public List<ScreenInstance> GetInstances(string groupName, string boxName)
         {
-            return _boxHostController.Instances.Values.Where(x => x.Box.Name == boxName).ToList();
+            return _boxHostController.Instances.Values.Where(x => x.ScreenModel.Name == boxName).ToList();
         }
     }
 }

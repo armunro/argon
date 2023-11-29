@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using COSMIC.Elements.Web.Domain.Box;
+using COSMIC.Elements.Web.Domain.Screen;
 
 namespace COSMIC.Elements.Web.Domain.Config
 {
     public interface IBoxGroupReader
     {
-        Dictionary<string,BoxGroup> ReadToolsets();
+        Dictionary<string,ScreenGroup> ReadToolsets();
     }
 }

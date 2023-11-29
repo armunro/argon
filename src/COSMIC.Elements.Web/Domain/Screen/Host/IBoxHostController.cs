@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
 
-namespace COSMIC.Elements.Web.Domain.Box.Host
+namespace COSMIC.Elements.Web.Domain.Screen.Host
 {
     public interface IBoxHostController
     {
-        Dictionary<string, BoxGroup> BoxGroups { get; set; }
-        Dictionary<Guid, BoxInstance> Instances { get; set; }
+        Dictionary<string, ScreenGroup> BoxGroups { get; set; }
+        Dictionary<Guid, ScreenInstance> Instances { get; set; }
 
         void StartBox(string toolsetName, string toolName);
         void StopBox(string toolsetName, string toolName);
-        BoxInstance GetBoxByName(string name);
+        ScreenInstance GetBoxByName(string name);
         
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
-using COSMIC.Elements.Web.Domain.Box;
 using COSMIC.Elements.Web.Domain.Config;
+using COSMIC.Elements.Web.Domain.Screen;
 using Newtonsoft.Json;
 
 
@@ -16,32 +16,32 @@ namespace COSMIC.Elements.Web.Adapter.BoxGroup
             _filePath = filePath;
         }
 
-        public Dictionary<string, Domain.Box.BoxGroup> ReadToolsets()
+        public Dictionary<string, ScreenGroup> ReadToolsets()
         {
             
-            Dictionary<string, Domain.Box.BoxGroup> toolSets = new Dictionary<string, Domain.Box.BoxGroup>();
+            Dictionary<string, ScreenGroup> toolSets = new Dictionary<string, ScreenGroup>();
 
             string[] toolDirectories = Directory.GetDirectories(_filePath);
             foreach (string toolDirectoryPath in toolDirectories)
             {
                 string toolName = Path.GetFileName(toolDirectoryPath);
-                Domain.Box.BoxGroup newBoxGroup = new Domain.Box.BoxGroup();
+                ScreenGroup newScreenGroup = new ScreenGroup();
 
                 string[] toolFiles = Directory.GetFiles( toolDirectoryPath, "*.tool.json");
                 foreach (string toolFile in toolFiles)
                 {
-                    Box newBox = JsonConvert.DeserializeObject<Box>(System.IO.File.ReadAllText(toolFile));
-                    newBoxGroup.Tools.Add(newBox);
+                    ScreenModel newScreenModel = JsonConvert.DeserializeObject<ScreenModel>(System.IO.File.ReadAllText(toolFile));
+                    newScreenGroup.Tools.Add(newScreenModel);
                 }
 
-                newBoxGroup.Name = toolName;
-                toolSets[toolName] = newBoxGroup;
+                newScreenGroup.Name = toolName;
+                toolSets[toolName] = newScreenGroup;
             }
 
             return toolSets;
         }
 
-        public void WriteToolset(Domain.Box.BoxGroup toolset)
+        public void WriteToolset(ScreenGroup toolset)
         {
             
             string configDirectoryPath = Path.Join(_filePath, toolset.Name);
@@ -50,7 +50,7 @@ namespace COSMIC.Elements.Web.Adapter.BoxGroup
                 Directory.CreateDirectory(configDirectoryPath);
             }
 
-            foreach (Box tool in toolset.Tools)
+            foreach (ScreenModel tool in toolset.Tools)
             {
                 string toolPath = Path.Join(_filePath, toolset.Name, $"{tool.Name}.tool.json");
                 System.IO.File.WriteAllText(toolPath, JsonConvert.SerializeObject(tool, Formatting.Indented));

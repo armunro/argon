@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using COSMIC.Elements.Web.Domain.Box;
-using COSMIC.Elements.Web.Domain.Box.Host;
+using COSMIC.Elements.Web.Domain.Screen;
+using COSMIC.Elements.Web.Domain.Screen.Host;
 using Microsoft.AspNetCore.Mvc;
 
 namespace COSMIC.Elements.Web.Controllers
@@ -18,7 +18,7 @@ namespace COSMIC.Elements.Web.Controllers
 
 
         [HttpGet]
-        public Dictionary<string, BoxGroup> Index()
+        public Dictionary<string, ScreenGroup> Index()
         {
             return _controller.BoxGroups;
         }

@@ -1,9 +1,9 @@
-using COSMIC.Elements.Web.Domain.Box;
+using COSMIC.Elements.Web.Domain.Screen;
 
 namespace COSMIC.Elements.Web.Domain.Config
 {
     public interface IBoxGroupWriter
     {
-        void WriteToolset(BoxGroup boxGroup);
+        void WriteToolset(ScreenGroup screenGroup);
     }
 }

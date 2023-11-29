@@ -1,4 +1,4 @@
-namespace COSMIC.Elements.Web.Domain.Box.Host.State
+namespace COSMIC.Elements.Web.Domain.Screen.Host.State
 {
     public enum BoxHostFormState
     {

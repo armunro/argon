@@ -1,14 +1,14 @@
 using System.Collections.Generic;
-using COSMIC.Elements.Web.Domain.Box;
+using COSMIC.Elements.Web.Domain.Screen;
 
 namespace COSMIC.Elements.Web.Application.Example.Toolset
 {
     public class ExampleBasicGoogleToolset
     {
-        public static BoxGroup ProvideToolset => new()
+        public static ScreenGroup ProvideToolset => new()
         {
             Name = "Google",
-            Tools = new List<Box>()
+            Tools = new List<ScreenModel>()
             {
                 new()
                 {

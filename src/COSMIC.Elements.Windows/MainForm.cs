@@ -7,9 +7,9 @@ using System.Windows.Forms;
 using Autofac;
 using COSMIC.Elements.Web;
 using COSMIC.Elements.Web.Adapter.BoxGroup;
-using COSMIC.Elements.Web.Domain.Box;
-using COSMIC.Elements.Web.Domain.Box.Host;
 using COSMIC.Elements.Web.Domain.Config;
+using COSMIC.Elements.Web.Domain.Screen;
+using COSMIC.Elements.Web.Domain.Screen.Host;
 using COSMIC.Elements.Windows.Adapter.Host.WinForms;
 using FontAwesome.Sharp;
 
@@ -20,9 +20,9 @@ namespace COSMIC.Elements.Windows
         public static IContainer Container;
         public static ElementsAspCorePresentation Presentation = new();
 
-        public Dictionary<string, BoxGroup> BoxGroups { get; set; }
+        public Dictionary<string, ScreenGroup> BoxGroups { get; set; }
 
-        public Dictionary<Guid, BoxInstance> Instances { get; set; } = new();
+        public Dictionary<Guid, ScreenInstance> Instances { get; set; } = new();
 
         public MainForm(string configDir)
         {
@@ -47,26 +47,26 @@ namespace COSMIC.Elements.Windows
             NotifyIcon.Visible = true;
         }
 
-        public IBoxHost CreateBox(Box box, Guid instanceId)
+        public IBoxHost CreateBox(ScreenModel screenModel, Guid instanceId)
         {
             IBoxHost boxHost;
             boxHost = new BrowserBoxHost();
             boxHost.InstanceId = instanceId;
-            boxHost.SetHostBox(box);
+            boxHost.SetHostBox(screenModel);
             return boxHost;
         }
 
         public void StartBox(string toolsetName, string toolName)
         {
-            Box box = BoxGroups[toolsetName].Tools.FirstOrDefault(x => x.Name == toolName);
+            ScreenModel screenModel = BoxGroups[toolsetName].Tools.FirstOrDefault(x => x.Name == toolName);
             Guid newInstanceId = Guid.NewGuid();
 
 
             Invoke(new Action(() =>
             {
-                IBoxHost host = CreateBox(box, newInstanceId);
+                IBoxHost host = CreateBox(screenModel, newInstanceId);
 
-                BoxInstance newInstance = new BoxInstance(box: box, host: host, instanceId: newInstanceId);
+                ScreenInstance newInstance = new ScreenInstance(screenModel: screenModel, host: host, instanceId: newInstanceId);
                 Instances[newInstance.InstanceId] = newInstance;
                 newInstance.Host.InstanceId = newInstanceId;
                 newInstance.Host.OpenWindow();
@@ -77,15 +77,15 @@ namespace COSMIC.Elements.Windows
         {
             Invoke(new Action(() =>
             {
-                BoxInstance instance = Instances.Values.Where(x => x.Box.Name == toolName).FirstOrDefault();
+                ScreenInstance instance = Instances.Values.Where(x => x.ScreenModel.Name == toolName).FirstOrDefault();
                 instance.Host.CloseBox();
                 Instances.Remove(instance.InstanceId);
             }));
         }
 
-        public BoxInstance GetBoxByName(string name)
+        public ScreenInstance GetBoxByName(string name)
         {
-            var boxInstance = Instances.Values.Where(x => x.Box.Name == name).FirstOrDefault();
+            var boxInstance = Instances.Values.Where(x => x.ScreenModel.Name == name).FirstOrDefault();
             return boxInstance;
         }
 

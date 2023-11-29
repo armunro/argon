@@ -1,7 +1,7 @@
 using System;
-using COSMIC.Elements.Web.Domain.Box.Host.State;
+using COSMIC.Elements.Web.Domain.Screen.Host.State;
 
-namespace COSMIC.Elements.Web.Domain.Box.Host
+namespace COSMIC.Elements.Web.Domain.Screen.Host
 {
     public interface IBoxHost
     {
@@ -10,6 +10,6 @@ namespace COSMIC.Elements.Web.Domain.Box.Host
         void OpenWindow();
         void CloseBox();
         void ChangeWindowState(BoxHostFormState formState);
-        void SetHostBox(Box box);
+        void SetHostBox(ScreenModel screenModel);
     }
 }
