@@ -7,8 +7,8 @@ namespace COSMIC.Elements.Web.Domain.Screen.Host
     {
         Dictionary<string, ScreenGroup> ScreenGroups { get; set; }
         Dictionary<Guid, ScreenInstance> Instances { get; set; }
-        void OpenScreen(string toolsetName, string toolName);
-        void CloseScreen(string toolsetName, string toolName);
+        void OpenScreen(string groupName, string screenName);
+        void CloseScreen(string groupName, string screenName);
         ScreenInstance GetScreenByName(string name);
         
     }

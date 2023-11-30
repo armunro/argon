@@ -12,12 +12,10 @@ namespace COSMIC.Elements.Windows
         static void Main(string[] args)
         {
             AllocConsole();
-
-            System.Windows.Forms.Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            System.Windows.Forms.Application.EnableVisualStyles();
-            System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
-            System.Windows.Forms.Application.Run(new MainForm(args[0]));
-            
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm(args[0]));
             Console.ReadKey();
         }
         

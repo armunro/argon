@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using COSMIC.Elements.Web.Domain.Screen;
 
-namespace COSMIC.Elements.Web.Application.Example.Toolset
+namespace COSMIC.Elements.Web.Application.Example.ScreenGroup
 {
-    public class ExampleBasicGoogleToolset
+    public class ExampleScreenGroup
     {
-        public static ScreenGroup ProvideToolset => new()
+        public static Domain.Screen.ScreenGroup ProvideToolset => new()
         {
             Name = "Google",
             Tools = new List<ScreenModel>()

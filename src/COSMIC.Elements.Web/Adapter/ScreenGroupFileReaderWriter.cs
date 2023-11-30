@@ -4,8 +4,7 @@ using COSMIC.Elements.Web.Domain.Config;
 using COSMIC.Elements.Web.Domain.Screen;
 using Newtonsoft.Json;
 
-
-namespace COSMIC.Elements.Web.Adapter.BoxGroup
+namespace COSMIC.Elements.Web.Adapter
 {
     public class ScreenGroupFileReaderWriter : IScreenGroupReader, IScreenGroupWriter
     {

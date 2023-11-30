@@ -6,7 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Autofac;
 using COSMIC.Elements.Web;
-using COSMIC.Elements.Web.Adapter.BoxGroup;
+using COSMIC.Elements.Web.Adapter;
 using COSMIC.Elements.Web.Domain.Config;
 using COSMIC.Elements.Web.Domain.Screen;
 using COSMIC.Elements.Web.Domain.Screen.Host;
@@ -56,9 +56,9 @@ namespace COSMIC.Elements.Windows
             return screenHost;
         }
 
-        public void OpenScreen(string toolsetName, string toolName)
+        public void OpenScreen(string groupName, string screenName)
         {
-            ScreenModel screenModel = ScreenGroups[toolsetName].Tools.FirstOrDefault(x => x.Name == toolName);
+            ScreenModel screenModel = ScreenGroups[groupName].Tools.FirstOrDefault(x => x.Name == screenName);
             Guid newInstanceId = Guid.NewGuid();
 
 
@@ -73,11 +73,11 @@ namespace COSMIC.Elements.Windows
             }));
         }
 
-        public void CloseScreen(string toolsetName, string toolName)
+        public void CloseScreen(string groupName, string screenName)
         {
             Invoke(new Action(() =>
             {
-                ScreenInstance instance = Instances.Values.Where(x => x.ScreenModel.Name == toolName).FirstOrDefault();
+                ScreenInstance instance = Instances.Values.Where(x => x.ScreenModel.Name == screenName).FirstOrDefault();
                 instance.Host.CloseBox();
                 Instances.Remove(instance.InstanceId);
             }));
