@@ -17,7 +17,7 @@ namespace COSMIC.Elements.Web.Controllers
         [HttpGet]
         public IActionResult Index(string boxGroupName, string boxName)
         {
-            _handler.StartBox(boxGroupName, boxName);
+            _handler.OpenScreen(boxGroupName, boxName);
             return Ok();
 
         }

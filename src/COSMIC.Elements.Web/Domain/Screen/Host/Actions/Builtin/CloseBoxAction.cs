@@ -4,7 +4,7 @@ namespace COSMIC.Elements.Web.Domain.Screen.Host.Actions.Builtin
     {
         public void PerformAction(IScreenHost host, ScreenModel screenModel, IScreenHostController controller)
         {   
-            controller.StopBox("", screenModel.Name);
+            controller.CloseScreen("", screenModel.Name);
             
         }
     }

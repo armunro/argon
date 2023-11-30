@@ -56,7 +56,7 @@ namespace COSMIC.Elements.Windows
             return screenHost;
         }
 
-        public void StartBox(string toolsetName, string toolName)
+        public void OpenScreen(string toolsetName, string toolName)
         {
             ScreenModel screenModel = ScreenGroups[toolsetName].Tools.FirstOrDefault(x => x.Name == toolName);
             Guid newInstanceId = Guid.NewGuid();
@@ -73,7 +73,7 @@ namespace COSMIC.Elements.Windows
             }));
         }
 
-        public void StopBox(string toolsetName, string toolName)
+        public void CloseScreen(string toolsetName, string toolName)
         {
             Invoke(new Action(() =>
             {
