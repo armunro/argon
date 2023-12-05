@@ -22,7 +22,7 @@ namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
         {
             InitializeComponent();
 
-            FormBorderStyle = FormBorderStyle.SizableToolWindow;
+           
             DoubleBuffered = true;
             Move += OnMove;
             Resize += OnResize;
