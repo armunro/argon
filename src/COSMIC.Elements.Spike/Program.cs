@@ -1,3 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
+namespace COSMIC.Elements.Spike;
 
-Console.WriteLine("Hello, World!");
+static class Program
+{
+    [STAThread]
+    static void Main()
+    {
+        ApplicationConfiguration.Initialize();
+        Application.Run(new ClipboardForm());
+    }
+}

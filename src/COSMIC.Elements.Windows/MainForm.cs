@@ -42,8 +42,7 @@ namespace COSMIC.Elements.Windows
 
 
             InitializeComponent();
-            NotifyIcon.Icon =
-                System.Drawing.Icon.FromHandle(IconChar.Archive.ToBitmap(32, 32, color: Color.White).GetHicon());
+            NotifyIcon.Icon = new System.Drawing.Icon("icon.ico");
             NotifyIcon.Visible = true;
         }
 
