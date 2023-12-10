@@ -1,7 +1,8 @@
 using System;
-using COSMIC.Elements.Web.Domain.Screen.Host.State;
+using COSMIC.Elements.Web.Domain.Screen;
+using COSMIC.Elements.Web.Domain.ScreenHost.State;
 
-namespace COSMIC.Elements.Web.Domain.Screen.Host
+namespace COSMIC.Elements.Web.Domain.ScreenHost
 {
     public interface IScreenHost
     {

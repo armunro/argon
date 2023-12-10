@@ -1,4 +1,6 @@
-namespace COSMIC.Elements.Web.Domain.Screen.Host.Actions.Builtin
+using COSMIC.Elements.Web.Domain.Screen;
+
+namespace COSMIC.Elements.Web.Domain.ScreenHost.Actions.Builtin
 {
     public class CloseBoxAction : IBoxHostAction
     {

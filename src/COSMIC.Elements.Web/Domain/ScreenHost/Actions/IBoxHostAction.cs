@@ -1,4 +1,6 @@
-namespace COSMIC.Elements.Web.Domain.Screen.Host.Actions
+using COSMIC.Elements.Web.Domain.Screen;
+
+namespace COSMIC.Elements.Web.Domain.ScreenHost.Actions
 {
     public interface IBoxHostAction
     {

@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using COSMIC.Elements.Web.Domain.Screen;
 
-namespace COSMIC.Elements.Web.Domain.Screen.Host
+namespace COSMIC.Elements.Web.Domain.ScreenHost
 {
     public interface IScreenHostController
     {

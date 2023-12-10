@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using COSMIC.Elements.Web.Domain.Screen;
-using COSMIC.Elements.Web.Domain.Screen.Host;
+using COSMIC.Elements.Web.Domain.ScreenHost;
 using Microsoft.AspNetCore.Mvc;
 
 namespace COSMIC.Elements.Web.Controllers

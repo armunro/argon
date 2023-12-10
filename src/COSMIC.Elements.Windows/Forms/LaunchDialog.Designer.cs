@@ -1,4 +1,4 @@
-﻿namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
+﻿namespace COSMIC.Elements.Windows.Forms
 {
     sealed partial class LaunchDialog
     {

@@ -1,4 +1,4 @@
-using COSMIC.Elements.Web.Domain.Screen.Host;
+using COSMIC.Elements.Web.Domain.ScreenHost;
 using Microsoft.AspNetCore.Mvc;
 
 namespace COSMIC.Elements.Web.Controllers

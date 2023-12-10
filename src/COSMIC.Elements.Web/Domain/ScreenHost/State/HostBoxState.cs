@@ -1,4 +1,4 @@
-namespace COSMIC.Elements.Web.Domain.Screen.Host.State
+namespace COSMIC.Elements.Web.Domain.ScreenHost.State
 {
     public class HostBoxState
     {

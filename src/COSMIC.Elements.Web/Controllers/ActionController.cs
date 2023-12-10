@@ -1,8 +1,8 @@
 using System;
 using COSMIC.Elements.Web.Domain.Screen;
-using COSMIC.Elements.Web.Domain.Screen.Host;
-using COSMIC.Elements.Web.Domain.Screen.Host.Actions;
-using COSMIC.Elements.Web.Domain.Screen.Host.Actions.Builtin;
+using COSMIC.Elements.Web.Domain.ScreenHost;
+using COSMIC.Elements.Web.Domain.ScreenHost.Actions;
+using COSMIC.Elements.Web.Domain.ScreenHost.Actions.Builtin;
 using Microsoft.AspNetCore.Mvc;
 
 namespace COSMIC.Elements.Web.Controllers

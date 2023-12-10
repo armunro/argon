@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Web.WebView2.WinForms;
 
-namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
+namespace COSMIC.Elements.Windows.Forms
 {
     public sealed partial class LaunchDialog : Form
     {

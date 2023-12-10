@@ -1,5 +1,5 @@
 using System;
-using COSMIC.Elements.Web.Domain.Screen.Host;
+using COSMIC.Elements.Web.Domain.ScreenHost;
 
 namespace COSMIC.Elements.Web.Domain.Screen
 {

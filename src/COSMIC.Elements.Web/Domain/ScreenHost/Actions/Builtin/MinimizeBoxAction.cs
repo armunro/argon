@@ -1,6 +1,7 @@
-using COSMIC.Elements.Web.Domain.Screen.Host.State;
+using COSMIC.Elements.Web.Domain.Screen;
+using COSMIC.Elements.Web.Domain.ScreenHost.State;
 
-namespace COSMIC.Elements.Web.Domain.Screen.Host.Actions.Builtin
+namespace COSMIC.Elements.Web.Domain.ScreenHost.Actions.Builtin
 {
     public class MinimizeBoxAction : IBoxHostAction
     {

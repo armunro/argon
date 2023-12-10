@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -9,11 +8,9 @@ using COSMIC.Elements.Web;
 using COSMIC.Elements.Web.Adapter;
 using COSMIC.Elements.Web.Domain.Config;
 using COSMIC.Elements.Web.Domain.Screen;
-using COSMIC.Elements.Web.Domain.Screen.Host;
-using COSMIC.Elements.Windows.Adapter.Host.WinForms;
-using FontAwesome.Sharp;
+using COSMIC.Elements.Web.Domain.ScreenHost;
 
-namespace COSMIC.Elements.Windows
+namespace COSMIC.Elements.Windows.Forms
 {
     public partial class MainForm : Form, IScreenHostController
     {
@@ -26,12 +23,10 @@ namespace COSMIC.Elements.Windows
 
         public MainForm(string configDir)
         {
-            var builder = new ContainerBuilder();
-            builder.RegisterModule<Dependencies.ToolsModule>();
-
-            builder.RegisterInstance(this).As<IScreenHostController>();
-
             string toolsetDir = Path.Join(configDir, "toolsets");
+            var builder = new ContainerBuilder();
+           
+            builder.RegisterInstance(this).As<IScreenHostController>();
             builder.RegisterType<ScreenGroupFileReaderWriter>().As<IScreenGroupReader>().SingleInstance()
                 .WithParameter(new NamedParameter("filePath", toolsetDir));
             builder.RegisterType<ScreenGroupFileReaderWriter>().As<IScreenGroupWriter>().SingleInstance()
@@ -46,10 +41,9 @@ namespace COSMIC.Elements.Windows
             NotifyIcon.Visible = true;
         }
 
-        public IScreenHost CreateBox(ScreenModel screenModel, Guid instanceId)
+        public IScreenHost CreateScreenHost(ScreenModel screenModel, Guid instanceId)
         {
-            IScreenHost screenHost;
-            screenHost = new BrowserScreenHost();
+            IScreenHost screenHost= new BrowserScreenHost();
             screenHost.InstanceId = instanceId;
             screenHost.SetHostBox(screenModel);
             return screenHost;
@@ -63,7 +57,7 @@ namespace COSMIC.Elements.Windows
 
             Invoke(new Action(() =>
             {
-                IScreenHost host = CreateBox(screenModel, newInstanceId);
+                IScreenHost host = CreateScreenHost(screenModel, newInstanceId);
 
                 ScreenInstance newInstance = new ScreenInstance(screenModel: screenModel, host: host, instanceId: newInstanceId);
                 Instances[newInstance.InstanceId] = newInstance;
@@ -76,7 +70,7 @@ namespace COSMIC.Elements.Windows
         {
             Invoke(new Action(() =>
             {
-                ScreenInstance instance = Instances.Values.Where(x => x.ScreenModel.Name == screenName).FirstOrDefault();
+                ScreenInstance instance = Instances.Values.FirstOrDefault(x => x.ScreenModel.Name == screenName);
                 instance.Host.CloseBox();
                 Instances.Remove(instance.InstanceId);
             }));
@@ -102,7 +96,6 @@ namespace COSMIC.Elements.Windows
         private void NotifyIconOnClick(object? sender, EventArgs e)
         {
             LaunchDialog launchDialog = new LaunchDialog();
-
             launchDialog.ShowDialog();
         }
 

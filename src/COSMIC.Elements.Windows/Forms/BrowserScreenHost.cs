@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Drawing;
-using System.Windows.Controls;
 using System.Windows.Forms;
 using COSMIC.Elements.Web.Domain.Screen;
-using COSMIC.Elements.Web.Domain.Screen.Host;
-using COSMIC.Elements.Web.Domain.Screen.Host.State;
-using Microsoft.Web.WebView2.Core;
+using COSMIC.Elements.Web.Domain.ScreenHost;
+using COSMIC.Elements.Web.Domain.ScreenHost.State;
 using Microsoft.Web.WebView2.WinForms;
-using Label = System.Windows.Forms.Label;
 
-namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
+namespace COSMIC.Elements.Windows.Forms
 {
     public sealed class BrowserScreenHost : Form, IScreenHost
     {
@@ -93,7 +89,6 @@ namespace COSMIC.Elements.Windows.Adapter.Host.WinForms
 
         public void ChangeWindowState(BoxHostFormState formState)
         {
-            Console.WriteLine("Form state is " + formState.ToString());
             switch (formState)
             {
                 case BoxHostFormState.Maximized:

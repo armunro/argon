@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace COSMIC.Elements.Windows
+namespace COSMIC.Elements.Windows.Forms
 {
     partial class MainForm
     {
